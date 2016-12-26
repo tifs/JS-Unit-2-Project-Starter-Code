@@ -5,6 +5,10 @@
   Please add all Javascript code to this file.
 */
 
+// // not sure if i need this
+// $(document).ready(function() {
+// });
+
 $.getJSON("http://www.reddit.com/r/food.json?jsonp=?", function(redditAPI) {
   var $redditTitle = redditAPI.data.children[2].data.title;
   var $redditThumbnail = redditAPI.data.children[2].data.thumbnail;
@@ -20,8 +24,20 @@ $.getJSON("http://www.reddit.com/r/food.json?jsonp=?", function(redditAPI) {
 });
 
 
-// $(document).ready(function() {
-// });
+
+
+// here's how to get info from guardian's api
+$.getJSON("http://content.guardianapis.com/search?q=recipe&api-key=af651065-a4d4-4674-bd6e-35e4bc3e20cc", function(guardianAPI) {
+  var $guardianTitle = guardianAPI.response.results[0].webTitle;
+  var $guardianUrl = guardianAPI.response.results[0].webUrl;
+  var $guardianCategory = guardianAPI.response.results[0].sectionName;
+  $('.articleContent h3').append($guardianTitle);
+  // $('.featuredImage img').attr('src', $redditThumbnail);
+  $('.articleContent a').attr('href', $guardianUrl);
+  $('.articleContent h6').append($guardianCategory);
+  // $('.impressions').append($redditScore);
+});
+
 
 
 $.getJSON(
@@ -35,20 +51,14 @@ $.getJSON(
         $("#reddit-content").append( '<br>' + post.data.permalink );
         $("#reddit-content").append( '<br>' + post.data.ups );
         $("#reddit-content").append( '<br>' + post.data.downs );
-        $("#reddit-content").append( '<hr>' );
+        $("#reddit-content").append( '<br>' );
       }
     );
   }
-)
-.success(function() { alert("second success"); })
-.error(function() { alert("error"); })
-.complete(function() { alert("complete"); });
+);
+// .success(function() { alert("second success"); })
+// .error(function() { alert("error"); })
+// .complete(function() { alert("complete"); });
 
 
-// here's how to get info from guardian's api
-$.getJSON("http://content.guardianapis.com/search?q=recipe&api-key=af651065-a4d4-4674-bd6e-35e4bc3e20cc", function(guardianAPI) {
-  console.log(guardianAPI.response.results[0]);
-  console.log(guardianAPI.response.results[0].webTitle);
-  console.log(guardianAPI.response.results[0].webUrl);
-  console.log(guardianAPI.response.results[0].sectionName);
-});
+
