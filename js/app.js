@@ -9,9 +9,11 @@
 // $(document).ready(function() {
 // });
 
-$('#search').click(function() {
-  $(this).toggleClass("active");
+$('#search').on({
+  "click": (function() {$(this).toggleClass("active");}),
+  // "mouseover": (function() {$(this).toggleClass("active");})
 });
+
 
 $.getJSON("http://www.reddit.com/r/food.json?jsonp=?", function(redditAPI) {
   var $redditTitle = redditAPI.data.children[2].data.title;
