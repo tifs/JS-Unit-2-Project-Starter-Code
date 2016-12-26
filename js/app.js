@@ -5,14 +5,19 @@
   Please add all Javascript code to this file.
 */
 
-// // not sure if i need this
-// $(document).ready(function() {
-// });
+// not sure if i need this
+$(document).ready(function() {
+  // while data loads add the "hidden" class to the div with #main and unhide the #popup div
+$('#popUp').removeClass("hidden");
+});
+
 
 $('#search').on({
   "click": (function() {$(this).toggleClass("active");}),
-  // "mouseover": (function() {$(this).toggleClass("active");})
+  "mouseover": (function() {$(this).toggleClass("active");})
 });
+
+
 
 
 $.getJSON("http://www.reddit.com/r/food.json?jsonp=?", function(redditAPI) {
