@@ -8,13 +8,16 @@
 // not sure if i need this
 $(document).ready(function() {
   // while data loads add the "hidden" class to the div with #main and unhide the #popup div
-$('#popUp').removeClass("hidden");
+  $('#popUp').removeClass("hidden");
+  $('.closePopUp').click(function() {
+    $(this).parent().addClass("hidden");
+  });
 });
 
 
 $('#search').on({
-  "click": (function() {$(this).toggleClass("active");}),
-  "mouseover": (function() {$(this).toggleClass("active");})
+  "click": (function() {$(this).toggleClass("active");})//,
+  // "mouseover": (function() {$(this).toggleClass("active");})
 });
 
 
