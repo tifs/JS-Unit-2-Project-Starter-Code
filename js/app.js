@@ -9,6 +9,10 @@
 // $(document).ready(function() {
 // });
 
+$('#search').click(function() {
+  $(this).toggleClass("active");
+});
+
 $.getJSON("http://www.reddit.com/r/food.json?jsonp=?", function(redditAPI) {
   var $redditTitle = redditAPI.data.children[2].data.title;
   var $redditThumbnail = redditAPI.data.children[2].data.thumbnail;
@@ -40,22 +44,22 @@ $.getJSON("http://content.guardianapis.com/search?q=recipe&api-key=af651065-a4d4
 
 
 
-$.getJSON(
-  "http://www.reddit.com/r/food.json?jsonp=?",
-  function foo(data) {
-    $.each(
-      data.data.children.slice(0, 10),
-      function (i, post) {
-        $(".article").append( '<br>' + post.data.title );
-        $("#reddit-content").append( '<br>' + post.data.url );
-        $("#reddit-content").append( '<br>' + post.data.permalink );
-        $("#reddit-content").append( '<br>' + post.data.ups );
-        $("#reddit-content").append( '<br>' + post.data.downs );
-        $("#reddit-content").append( '<br>' );
-      }
-    );
-  }
-);
+// $.getJSON(
+//   "http://www.reddit.com/r/food.json?jsonp=?",
+//   function foo(data) {
+//     $.each(
+//       data.data.children.slice(0, 10),
+//       function (i, post) {
+//         $(".article").append( '<br>' + post.data.title );
+//         $("#reddit-content").append( '<br>' + post.data.url );
+//         $("#reddit-content").append( '<br>' + post.data.permalink );
+//         $("#reddit-content").append( '<br>' + post.data.ups );
+//         $("#reddit-content").append( '<br>' + post.data.downs );
+//         $("#reddit-content").append( '<br>' );
+//       }
+//     );
+//   }
+// );
 // .success(function() { alert("second success"); })
 // .error(function() { alert("error"); })
 // .complete(function() { alert("complete"); });
